@@ -45,8 +45,9 @@ walker::walker() {
     //  Publish velocity data into the node.
     velocity = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
     // Subscribe to the laser scan message.
-    laser = nh.subscribe <sensor_msgs::LaserScan> ("scan", 1, &walker::laserCallback, this);
-    
+    laser = nh.subscribe <sensor_msgs::LaserScan> \
+            ("scan", 1, &walker::laserCallback, this);
+
     stop();
 }
 
@@ -70,7 +71,8 @@ void walker::laserCallback(const sensor_msgs::LaserScan::ConstPtr& data) {
     auto sensor2 = data->ranges[30];
     auto sensor3 = data->ranges[330];
 
-    if (sensor1 <= obstacle_dis || sensor2 <= obstacle_dis || sensor1 <= obstacle_dis) {
+    if (sensor1 <= obstacle_dis || sensor2 <= obstacle_dis
+        || sensor1 <= obstacle_dis) {
         obstacle_ahead = true;
     }
 }
