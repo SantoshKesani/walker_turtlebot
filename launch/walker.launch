@@ -5,6 +5,6 @@
   
   <node name="walker" pkg="walker_turtlebot" type="walker_turtlebot" output ="screen" />
 
-  <node if = "$(arg Recorder)" pkg= "rosbag" name= "record_bag" type= "record"	args = "-a -O $(find walker_turtlebot)/results/recorder.bag --exclude '/camera/*'" />
+  <node if = "$(arg Recorder)" pkg= "rosbag" name= "record_bag" type= "record"	args = "--duration=20 -a -O $(find walker_turtlebot)/results/recorder.bag --exclude '/camera/*'" />
 
 </launch>
